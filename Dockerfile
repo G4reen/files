@@ -1,37 +1,37 @@
 # ─────────────────────────────────────────────────────────────────────────────
 # Dockerfile — Pipeline DataOps Telco Customer Churn
-# Asignatura : ITY1101 - Gestión de Datos para IA
+# Basado en el devcontainer de la actividad de clases ITY1101
 # ─────────────────────────────────────────────────────────────────────────────
 
-# Imagen base oficial Python 3.11 slim (liviana, sin dependencias innecesarias)
 FROM python:3.11-slim
 
-# Metadatos del contenedor
 LABEL maintainer="Equipo DataOps ITY1101"
-LABEL description="Pipeline DataOps para predicción de churn en Telco"
+LABEL description="Pipeline DataOps — Telco Customer Churn"
 LABEL version="1.0"
 
-# Directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copiar solo los archivos necesarios (el CSV va en /app/data/)
+# Instalar dependencias del sistema
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copiar e instalar dependencias Python
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar código fuente
 COPY pipeline.py .
+COPY ingestion/ ingestion/
+COPY procesamiento/ procesamiento/
 
 # Crear estructura de directorios
 RUN mkdir -p data output logs
 
-# No hay dependencias externas: el pipeline usa solo la librería estándar de Python
-# Si se agregan dependencias futuras (pandas, great_expectations, etc.):
-# COPY requirements.txt .
-# RUN pip install --no-cache-dir -r requirements.txt
-
-# Variable de entorno para deshabilitar buffer de salida (mejor logging en Docker)
+# Sin buffer para que los logs se vean en tiempo real
 ENV PYTHONUNBUFFERED=1
 
-# Puerto expuesto (para futuras extensiones con API REST)
-# EXPOSE 8000
-
-# Comando por defecto al ejecutar el contenedor
-# El CSV debe montarse como volumen externo:
+# Ejecutar pipeline montando volúmenes externos:
+#   docker build -t telco-pipeline .
 #   docker run -v $(pwd)/data:/app/data -v $(pwd)/output:/app/output telco-pipeline
 CMD ["python", "pipeline.py", "--input", "data/telco_raw.csv", "--output", "output/"]
