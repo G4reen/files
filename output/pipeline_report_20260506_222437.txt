@@ -1,0 +1,30 @@
+============================================================
+  REPORTE DE EJECUCIÓN — PIPELINE TELCO CHURN
+  Fecha/Hora : 2026-05-06 22:24:41
+============================================================
+
+[ ETAPA 1 — INGESTA ]
+  Registros ingestados      : 7,043
+
+[ ETAPA 2 — LIMPIEZA ]
+  TotalCharges imputados    : 11
+  Duplicados eliminados     : 0
+  Errores de conversión     : 0
+
+[ ETAPA 3 — VALIDACIÓN ]
+  Registros válidos         : 7,043
+  Registros rechazados      : 0
+  Tasa de rechazo           : 0.00%
+
+[ ETAPA 4 — CARGA ]
+  Archivo limpio            : /workspaces/files/output/telco_clean.csv
+  Archivo rechazados        : /workspaces/files/output/telco_rejected.csv
+
+[ KPIs DEL PIPELINE ]
+  Completitud               : 100.00%  (umbral >= 99%)  ✔ OK
+  Tasa de rechazo           : 0.00%   (umbral <= 1%)   ✔ OK
+  Latencia total            : 4.404s   (umbral < 60s)   ✔ OK
+
+============================================================
+  FIN DEL REPORTE
+============================================================

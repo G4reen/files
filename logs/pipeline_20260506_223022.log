@@ -1,0 +1,73 @@
+2026-05-06 22:30:22 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:22 | INFO     |   INICIO DEL PIPELINE DATAOPS — TELCO CUSTOMER CHURN
+2026-05-06 22:30:22 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:22 | INFO     | Log guardado en : /workspaces/files/logs/pipeline_20260506_223022.log
+2026-05-06 22:30:22 | INFO     | Input           : /workspaces/files/data/telco_raw.csv
+2026-05-06 22:30:22 | INFO     | Output          : /workspaces/files/output
+2026-05-06 22:30:22 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:22 | INFO     |   ETAPA 1 — INGESTA
+2026-05-06 22:30:22 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:22 | INFO     | Fuente     : /workspaces/files/data/telco_raw.csv
+2026-05-06 22:30:22 | INFO     | Tamaño     : 954.6 KB
+2026-05-06 22:30:22 | INFO     | Registros ingestados : 7,043
+2026-05-06 22:30:22 | INFO     | Columnas detectadas  : 21 → ['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+2026-05-06 22:30:22 | INFO     | ✔ Etapa 1 completada
+2026-05-06 22:30:22 | INFO     | 
+--- Resumen de datos sin transformar
+2026-05-06 22:30:22 | INFO     | FUENTE: telco_raw | Rows: 7043 | Columns: 21
+2026-05-06 22:30:22 | INFO     | 
+   customerID  gender  SeniorCitizen Partner Dependents  tenure PhoneService     MultipleLines InternetService OnlineSecurity OnlineBackup DeviceProtection TechSupport StreamingTV StreamingMovies        Contract PaperlessBilling     PaymentMethod  MonthlyCharges TotalCharges Churn
+0  7590-VHVEG  Female              0     Yes         No       1           No  No phone service             DSL             No          Yes               No          No          No              No  Month-to-month              Yes  Electronic check           29.85        29.85    No
+1  5575-GNVDE    Male              0      No         No      34          Yes                No             DSL            Yes           No              Yes          No          No              No        One year               No      Mailed check           56.95       1889.5    No
+2026-05-06 22:30:22 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:22 | INFO     |   ETAPA 2 — LIMPIEZA Y TRANSFORMACIÓN
+2026-05-06 22:30:22 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***3fc827, tenure=0]
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***cc8dcc, tenure=0]
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***58d283, tenure=0]
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***ea0b24, tenure=0]
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***0e9341, tenure=0]
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***8c6c0d, tenure=0]
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***f3d447, tenure=0]
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***3c63ff, tenure=0]
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***01b325, tenure=0]
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***53819d, tenure=0]
+2026-05-06 22:30:22 | INFO     |   TotalCharges vacío → imputado 0.0 [ID: ***384944, tenure=0]
+2026-05-06 22:30:22 | INFO     | Registros entrada     : 7,043
+2026-05-06 22:30:22 | INFO     | Registros limpios     : 7,043
+2026-05-06 22:30:22 | INFO     | TotalCharges imputados: 11
+2026-05-06 22:30:22 | INFO     | Duplicados eliminados : 0
+2026-05-06 22:30:22 | INFO     | Errores de conversión : 0
+2026-05-06 22:30:22 | INFO     | ✔ Etapa 2 completada
+2026-05-06 22:30:22 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:22 | INFO     |   ETAPA 3 — VALIDACIÓN ESTRUCTURAL Y SEMÁNTICA
+2026-05-06 22:30:22 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:23 | INFO     | Registros validados  : 7,043
+2026-05-06 22:30:23 | INFO     | Registros rechazados : 0 (0.00%)
+2026-05-06 22:30:23 | INFO     | Errores por tipo:
+2026-05-06 22:30:23 | INFO     | ✔ KPI tasa de rechazo OK: 0.00% (umbral: 1%)
+2026-05-06 22:30:23 | INFO     | ✔ Etapa 3 completada
+2026-05-06 22:30:23 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:23 | INFO     |   ETAPA 4 — CARGA
+2026-05-06 22:30:23 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:23 | INFO     | Dataset limpio exportado  → /workspaces/files/output/telco_clean.csv
+2026-05-06 22:30:23 | INFO     |   Registros escritos: 7,043
+2026-05-06 22:30:23 | INFO     | Reporte de ejecución      → /workspaces/files/output/pipeline_report_20260506_223022.txt
+2026-05-06 22:30:23 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:23 | INFO     |   KPIs DEL PIPELINE
+2026-05-06 22:30:23 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:23 | INFO     | Completitud    : 100.00%  (umbral >= 99%)  ✔ OK
+2026-05-06 22:30:23 | INFO     | Tasa rechazo   : 0.00%   (umbral <= 1%)   ✔ OK
+2026-05-06 22:30:23 | INFO     | Latencia total : 0.982s   (umbral < 60s)   ✔ OK
+2026-05-06 22:30:23 | INFO     | ✔ Etapa 4 completada
+2026-05-06 22:30:23 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:23 | INFO     |   RESUMEN DE DATOS FINAL
+2026-05-06 22:30:23 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:23 | INFO     | FUENTE/TRANSFORMACIÓN: telco_raw | Rows: 7043
+2026-05-06 22:30:23 | INFO     | FUENTE/TRANSFORMACIÓN: telco_clean | Rows: 7043
+2026-05-06 22:30:23 | INFO     | FUENTE/TRANSFORMACIÓN: telco_valid | Rows: 7043
+2026-05-06 22:30:23 | INFO     | FUENTE/TRANSFORMACIÓN: telco_rejected | Sin datos
+2026-05-06 22:30:23 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:23 | INFO     |   PIPELINE FINALIZADO
+2026-05-06 22:30:23 | INFO     | ────────────────────────────────────────────────────────────
+2026-05-06 22:30:23 | INFO     | Duración total  : 0.984s  |  Registros finales: 7,043  |  Log: /workspaces/files/logs/pipeline_20260506_223022.log
